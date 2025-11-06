@@ -2,6 +2,6 @@
 Tugas PMD wok
 Buat ngejalanin wok
 
-python -m venv venv
-.\venv\Scripts\activate
+python -m venv venv </br>
+.\venv\Scripts\activate </br>
 pip install -r requirements.txt
