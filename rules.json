@@ -1,0 +1,108 @@
+
+{
+    "Aluminium & alloys": {
+        "attributes": { "hardness_max_HB": 150, "ductility": "high", "abrasiveness": "low" },
+        "general_notes": "Aluminium dan paduannya: pakai rake positif besar, rawat supaya tidak terbentuk built-up edge (BUE).",
+        "recommendations": {
+         "HSS": {
+            "rake": "10-20°",
+            "clearance": "4-8°",
+            "nose_radius": "0.4-1.0 mm",
+            "edge_condition": "very sharp",
+            "remarks": "Cocok untuk finishing; penggunaan coolant dan pelumas membantu mencegah BUE."
+        },
+         "Carbide": {
+            "rake": "10-18°",
+            "clearance": "4-8°",
+            "nose_radius": "0.4-0.8 mm",
+            "edge_condition": "sharp to moderate",
+            "remarks": "Baik untuk kecepatan lebih tinggi; coating tidak selalu diperlukan."
+            }
+        }
+    },
+
+
+    "Low/Medium Carbon Steel": {
+     "attributes": { "hardness_max_HB": 250, "ductility": "medium", "abrasiveness": "medium" },
+     "general_notes": "Baja karbon rendah hingga sedang: geometri standar bekerja baik; gunakan coating untuk meningkatkan umur pahat pada carbide.",
+     "recommendations": {
+       "HSS": {
+        "rake": "6-10°",
+        "clearance": "6-8°",
+        "nose_radius": "0.4-0.8 mm",
+        "edge_condition": "sharp to moderate",
+        "remarks": "Baik untuk operasi pada kecepatan rendah hingga sedang."
+    },
+     "Carbide": {
+        "rake": "4-8°",
+        "clearance": "6-8°",
+        "nose_radius": "0.4-0.6 mm",
+        "edge_condition": "moderate",
+        "remarks": "Pilihan untuk produktivitas lebih tinggi. Pilih coating sesuai aplikasi."
+            }
+        }
+    },
+
+
+    "Stainless Steel (austenitic)": {
+     "attributes": { "hardness_max_HB": 300, "ductility": "high", "abrasiveness": "low" },
+     "general_notes": "Rentan work-hardening; gunakan rake rendah, pencegahan panas sangat penting.",
+     "recommendations": {
+      "Carbide": {
+        "rake": "0-6°",
+        "clearance": "7-10°",
+        "nose_radius": "0.2-0.5 mm",
+        "edge_condition": "sharp but small nose",
+        "remarks": "Gunakan coating TiAlN atau CVD untuk meningkatkan umur pahat."
+            }
+        }
+    },
+
+
+    "Cast Iron": {
+     "attributes": { "hardness_max_HB": 300, "ductility": "low", "abrasiveness": "medium" },
+     "general_notes": "Retak/brittle — sering diproses dengan negative rake untuk pemotongan kasar.",
+     "recommendations": {
+      "Carbide": {
+        "rake": "0 to -5°",
+        "clearance": "6-8°",
+        "nose_radius": "0.6-1.2 mm",
+        "edge_condition": "tough/blunt",
+        "remarks": "Baik untuk finishing dan roughing tergantung pahat."
+    },
+      "Ceramic": {
+        "rake": "-5 to 0°",
+        "clearance": "6-8°",
+        "nose_radius": "0.6-1.2 mm",
+        "edge_condition": "tough",
+        "remarks": "Cocok untuk pemotongan bahan yang keras/brittle pada kecepatan tinggi."
+            }
+        }
+    },
+
+
+    "Copper / Brass": {
+     "attributes": { "hardness_max_HB": 100, "ductility": "high", "abrasiveness": "low" },
+     "general_notes": "Ductile dan mudah membentuk BUE — gunakan geometri tajam & rake tinggi.",
+     "recommendations": {
+      "HSS": {
+        "rake": "12-20°",
+        "clearance": "4-8°",
+        "nose_radius": "0.3-0.8 mm",
+        "edge_condition": "very sharp",
+        "remarks": "Finishing sangat baik dengan HSS; perhatikan BUE."
+    },
+      "Carbide": {
+        "rake": "10-18°",
+        "clearance": "4-8°",
+        "nose_radius": "0.4-0.6 mm",
+        "edge_condition": "sharp",
+        "remarks": "Baik untuk kecepatan lebih tinggi."
+            }
+        }
+    },
+    "Titanium & Nickel alloys": {
+     "attributes": { "hardness_max_HB": 380, "ductility": "low-to-medium", "abrasiveness": "high" },
+     "general_notes": "Sulit dipotong; gunakan tool yang tahan aus dan setup kaku."
+    }
+}

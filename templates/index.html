@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pemilihan Geometri Pahat Bubut - Versi Minimal</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+     <main class="container">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+            <h1 style="margin:0">Pemilihan Geometri Pahat Bubut</h1>
+            <!-- Theme toggle placed top-right -->
+            <div>
+                <button id="theme-toggle" type="button" aria-pressed="false" title="Toggle theme" style="padding:0.4rem 0.6rem; border-radius:6px; border:1px solid var(--border); background:transparent; cursor:pointer">🌙</button>
+            </div>
+        </div>
+    <p>Pilih material benda kerja dan (opsional) material pahat untuk mendapatkan rekomendasi geometri pahat.</p>
+
+
+    <form id="recForm">
+     <label for="workpiece_material">Material Benda Kerja</label>
+     <select id="workpiece_material" required>
+      <option value="">-- Pilih material --</option>
+    </select>
+
+
+    <label for="tool_material">Material Pahat (opsional)</label>
+    <select id="tool_material">
+     <option value="">(Biarkan sistem memilih)</option>
+    </select>
+
+
+    <label for="operation">Tujuan</label>
+    <select id="operation">
+     <option value="">(Umum)</option>
+     <option value="roughing">Roughing</option>
+     <option value="finishing">Finishing</option>
+    </select>
+
+
+     <button type="submit">Dapatkan Rekomendasi</button>
+    </form>
+
+
+     <section id="result" class="card hidden">
+      <h2>Hasil Rekomendasi</h2>
+            <div id="explanation"></div>
+            <!-- short summary / highlight for quick reading -->
+            <div id="summary" class="muted" style="margin-top:0.5rem"></div>
+
+            <!-- readable key/value table for the recommendation JSON -->
+            <table id="resultTable" class="hidden" style="margin-top:0.75rem">
+                <thead>
+                    <tr><th>Properti</th><th>Nilai</th></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <!-- kid-friendly plain language summary and per-tool lists -->
+            <div id="friendlyDetails" class="card hidden" style="margin-top:0.75rem"></div>
+
+            <pre id="jsonOut"></pre>
+     </section>
+        </main>
+        <script src="/static/app.js"></script>
+    </body>
+</html>
