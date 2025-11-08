@@ -1,108 +1,142 @@
 
 {
-    "Aluminium & alloys": {
-        "attributes": { "hardness_max_HB": 150, "ductility": "high", "abrasiveness": "low" },
-        "general_notes": "Aluminium dan paduannya: pakai rake positif besar, rawat supaya tidak terbentuk built-up edge (BUE).",
-        "recommendations": {
-         "HSS": {
-            "rake": "10-20°",
-            "clearance": "4-8°",
-            "nose_radius": "0.4-1.0 mm",
-            "edge_condition": "very sharp",
-            "remarks": "Cocok untuk finishing; penggunaan coolant dan pelumas membantu mencegah BUE."
-        },
-         "Carbide": {
-            "rake": "10-18°",
-            "clearance": "4-8°",
-            "nose_radius": "0.4-0.8 mm",
-            "edge_condition": "sharp to moderate",
-            "remarks": "Baik untuk kecepatan lebih tinggi; coating tidak selalu diperlukan."
-            }
-        }
+  "Aluminium & alloys": {
+    "attributes": {
+      "hardness_max_HB": 150,
+      "typical_examples": ["Al 6061", "Al 7075"],
+      "ductility": "high",
+      "abrasiveness": "low",
+      "thermal_conductivity": "high",
+      "work_hardening": "low"
     },
-
-
-    "Low/Medium Carbon Steel": {
-     "attributes": { "hardness_max_HB": 250, "ductility": "medium", "abrasiveness": "medium" },
-     "general_notes": "Baja karbon rendah hingga sedang: geometri standar bekerja baik; gunakan coating untuk meningkatkan umur pahat pada carbide.",
-     "recommendations": {
-       "HSS": {
-        "rake": "6-10°",
-        "clearance": "6-8°",
-        "nose_radius": "0.4-0.8 mm",
-        "edge_condition": "sharp to moderate",
-        "remarks": "Baik untuk operasi pada kecepatan rendah hingga sedang."
+    "general_notes": "Gunakan rake positif besar; hindari built-up edge (BUE) dengan pelumasan/air blast dan chipbreaker.",
+    "operation": {
+      "roughing": {
+        "recommended_tools": ["Carbide"],
+        "geometry": { "rake": "10-18°", "clearance": "4-8°", "nose_radius": "0.6-1.2 mm", "edge_condition": "sharp to moderate" },
+        "cutting_params": { "cutting_speed_m_per_min": "200-400", "feed_mm_per_rev": "0.15-0.5", "depth_of_cut_mm": "1-3" },
+        "coolant": "recommended (air blast or soluble oil)",
+        "chip_control": "use chipbreaker / segmented chip",
+        "preferred_coatings": ["uncoated", "TiN optional"]
+      },
+      "finishing": {
+        "recommended_tools": ["HSS", "Carbide"],
+        "geometry": { "rake": "12-20°", "clearance": "4-8°", "nose_radius": "0.2-0.8 mm", "edge_condition": "very sharp" },
+        "cutting_params": { "cutting_speed_m_per_min": "150-300 (HSS lower)", "feed_mm_per_rev": "0.05-0.2", "depth_of_cut_mm": "0.1-0.5" },
+        "coolant": "recommended",
+        "chip_control": "important to avoid BUE",
+        "preferred_coatings": ["uncoated", "light PVD"]
+      }
     },
-     "Carbide": {
-        "rake": "4-8°",
-        "clearance": "6-8°",
-        "nose_radius": "0.4-0.6 mm",
-        "edge_condition": "moderate",
-        "remarks": "Pilihan untuk produktivitas lebih tinggi. Pilih coating sesuai aplikasi."
-            }
-        }
+    "recommendations": {
+      "HSS": { "rake": "10-20°", "clearance": "4-8°", "nose_radius": "0.4-1.0 mm", "edge_condition": "very sharp", "remarks": "Baik untuk finishing pada kecepatan rendah." },
+      "Carbide": { "rake": "10-18°", "clearance": "4-8°", "nose_radius": "0.4-0.8 mm", "edge_condition": "sharp to moderate", "remarks": "Cocok untuk kecepatan lebih tinggi; hati-hati BUE." }
     },
+    "notes_for_instructor": "Nilai potong bergantung pada paduan dan kondisi mesin; verifikasi dengan datasheet insert."
+  },
 
-
-    "Stainless Steel (austenitic)": {
-     "attributes": { "hardness_max_HB": 300, "ductility": "high", "abrasiveness": "low" },
-     "general_notes": "Rentan work-hardening; gunakan rake rendah, pencegahan panas sangat penting.",
-     "recommendations": {
-      "Carbide": {
-        "rake": "0-6°",
-        "clearance": "7-10°",
-        "nose_radius": "0.2-0.5 mm",
-        "edge_condition": "sharp but small nose",
-        "remarks": "Gunakan coating TiAlN atau CVD untuk meningkatkan umur pahat."
-            }
-        }
+  "Low/Medium Carbon Steel": {
+    "attributes": { "hardness_max_HB": 250, "typical_examples": ["AISI 1018", "C45"], "ductility": "medium", "abrasiveness": "medium", "work_hardening": "low-to-medium" },
+    "general_notes": "Geometri standar bekerja baik; carbide bercoating disarankan untuk produktivitas tinggi.",
+    "operation": {
+      "roughing": { "recommended_tools": ["Carbide"], "geometry": { "rake": "4-8°", "clearance": "6-8°", "nose_radius": "0.6-1.2 mm", "edge_condition": "moderate to tough" }, "cutting_params": { "cutting_speed_m_per_min": "120-250", "feed_mm_per_rev": "0.15-0.6", "depth_of_cut_mm": "1-4" }, "coolant": "recommended for heat and chip control", "chip_control": "standard chipbreaker", "preferred_coatings": ["TiN","TiAlN"] },
+      "finishing": { "recommended_tools": ["HSS","Carbide"], "geometry": { "rake": "6-10°", "clearance": "6-8°", "nose_radius": "0.2-0.8 mm", "edge_condition": "sharp to moderate" }, "cutting_params": { "cutting_speed_m_per_min": "80-150 (HSS) / 150-220 (Carbide)", "feed_mm_per_rev": "0.05-0.2", "depth_of_cut_mm": "0.05-0.5" }, "coolant": "optional but improves tool life", "chip_control": "standard", "preferred_coatings": ["TiAlN","CVD"] }
     },
-
-
-    "Cast Iron": {
-     "attributes": { "hardness_max_HB": 300, "ductility": "low", "abrasiveness": "medium" },
-     "general_notes": "Retak/brittle — sering diproses dengan negative rake untuk pemotongan kasar.",
-     "recommendations": {
-      "Carbide": {
-        "rake": "0 to -5°",
-        "clearance": "6-8°",
-        "nose_radius": "0.6-1.2 mm",
-        "edge_condition": "tough/blunt",
-        "remarks": "Baik untuk finishing dan roughing tergantung pahat."
+    "recommendations": {
+      "HSS": { "rake": "6-10°", "clearance": "6-8°", "nose_radius": "0.4-0.8 mm", "remarks": "Baik untuk kecepatan rendah" },
+      "Carbide": { "rake": "4-8°", "clearance": "6-8°", "nose_radius": "0.4-0.6 mm", "remarks": "Untuk produktivitas lebih tinggi; pilih grade sesuai abrasivitas." }
     },
-      "Ceramic": {
-        "rake": "-5 to 0°",
-        "clearance": "6-8°",
-        "nose_radius": "0.6-1.2 mm",
-        "edge_condition": "tough",
-        "remarks": "Cocok untuk pemotongan bahan yang keras/brittle pada kecepatan tinggi."
-            }
-        }
-    },
+    "notes_for_instructor": "Perhatikan kondisi mesin & kekakuan; gunakan coolant untuk operasi berat."
+  },
 
+  "Stainless Steel (austenitic)": {
+    "attributes": { "hardness_max_HB": 300, "typical_examples": ["304","316"], "ductility": "high", "abrasiveness": "low", "work_hardening": "high", "thermal_conductivity": "low" },
+    "general_notes": "Prone to work-hardening; gunakan rake rendah dan pendinginan baik."
+    ,"operation": {
+      "roughing": { "recommended_tools": ["Carbide (coated)"], "geometry": { "rake": "0-4°", "clearance": "7-10°", "nose_radius": "0.6-1.0 mm", "edge_condition": "robust" }, "cutting_params": { "cutting_speed_m_per_min": "60-120", "feed_mm_per_rev": "0.08-0.3", "depth_of_cut_mm": "0.5-2.5" }, "coolant": "highly recommended (soluble oil)", "chip_control": "use positive rake but small nose to avoid work hardening", "preferred_coatings": ["TiAlN","CVD"] },
+      "finishing": { "recommended_tools": ["Carbide (coated)"], "geometry": { "rake": "0-6°", "clearance": "7-10°", "nose_radius": "0.2-0.5 mm", "edge_condition": "sharp but small nose" }, "cutting_params": { "cutting_speed_m_per_min": "60-120", "feed_mm_per_rev": "0.03-0.12", "depth_of_cut_mm": "0.05-0.3" }, "coolant": "required to reduce work-hardening and temperature", "chip_control": "important", "preferred_coatings": ["TiAlN","AlTiN"] }
+    },
+    "recommendations": {
+      "Carbide": { "rake": "0-6°", "clearance": "7-10°", "nose_radius": "0.2-0.5 mm", "remarks": "Gunakan coating TiAlN/CVD; hindari feed tinggi." }
+    },
+    "notes_for_instructor": "Angka tergantung grade stainless; verifikasi pada alloy tertentu." 
+  },
 
-    "Copper / Brass": {
-     "attributes": { "hardness_max_HB": 100, "ductility": "high", "abrasiveness": "low" },
-     "general_notes": "Ductile dan mudah membentuk BUE — gunakan geometri tajam & rake tinggi.",
-     "recommendations": {
-      "HSS": {
-        "rake": "12-20°",
-        "clearance": "4-8°",
-        "nose_radius": "0.3-0.8 mm",
-        "edge_condition": "very sharp",
-        "remarks": "Finishing sangat baik dengan HSS; perhatikan BUE."
+  "Cast Iron": {
+    "attributes": { "hardness_max_HB": 300, "typical_examples": ["Grey Cast Iron","Ductile Iron"], "ductility": "low", "abrasiveness": "medium" },
+    "general_notes": "Material brittle; negative rake sering dipakai untuk roughing; chip breaking penting.",
+    "operation": {
+      "roughing": { "recommended_tools": ["Carbide","Ceramic"], "geometry": { "rake": "0 to -5°", "clearance": "6-8°", "nose_radius": "0.8-1.5 mm", "edge_condition": "tough/blunt" }, "cutting_params": { "cutting_speed_m_per_min": "200-400 (carbide)", "feed_mm_per_rev": "0.2-0.8", "depth_of_cut_mm": "1-5" }, "coolant": "optional (dry often used with ceramic)", "chip_control": "chipbreaker recommended", "preferred_coatings": ["CVD","CF"] },
+      "finishing": { "recommended_tools": ["Carbide","CBN"], "geometry": { "rake": "0°", "clearance": "6-8°", "nose_radius": "0.4-0.8 mm", "edge_condition": "tough" }, "cutting_params": { "cutting_speed_m_per_min": "100-250", "feed_mm_per_rev": "0.05-0.25", "depth_of_cut_mm": "0.1-1.0" }, "coolant": "depends on insert/material", "chip_control": "important", "preferred_coatings": ["CVD"] }
     },
-      "Carbide": {
-        "rake": "10-18°",
-        "clearance": "4-8°",
-        "nose_radius": "0.4-0.6 mm",
-        "edge_condition": "sharp",
-        "remarks": "Baik untuk kecepatan lebih tinggi."
-            }
-        }
-    },
-    "Titanium & Nickel alloys": {
-     "attributes": { "hardness_max_HB": 380, "ductility": "low-to-medium", "abrasiveness": "high" },
-     "general_notes": "Sulit dipotong; gunakan tool yang tahan aus dan setup kaku."
+    "recommendations": {
+      "Carbide": { "rake": "0 to -5°", "clearance": "6-8°", "nose_radius": "0.6-1.2 mm", "remarks": "Baik untuk finishing & roughing; pilih grade sesuai jenis cast iron." },
+      "Ceramic": { "rake": "-5 to 0°", "clearance": "6-8°", "nose_radius": "0.6-1.2 mm", "remarks": "Baik untuk kecepatan tinggi pada bahan brittle." }
     }
+  },
+
+  "Copper / Brass": {
+    "attributes": { "hardness_max_HB": 100, "typical_examples": ["Brass C360","Copper pure"], "ductility": "high", "abrasiveness": "low" },
+    "general_notes": "Ductile; cenderung membentuk BUE. Geometri tajam dan chipbreaker membantu.",
+    "operation": {
+      "roughing": { "recommended_tools": ["Carbide"], "geometry": { "rake": "10-18°", "clearance": "4-8°", "nose_radius": "0.6-1.0 mm", "edge_condition": "sharp" }, "cutting_params": { "cutting_speed_m_per_min": "150-300", "feed_mm_per_rev": "0.1-0.4", "depth_of_cut_mm": "0.5-2.0" }, "coolant": "recommended", "chip_control": "chipbreaker to avoid long continuous chips", "preferred_coatings": ["uncoated"] },
+      "finishing": { "recommended_tools": ["HSS","Carbide"], "geometry": { "rake": "12-20°", "clearance": "4-8°", "nose_radius": "0.2-0.6 mm", "edge_condition": "very sharp" }, "cutting_params": { "cutting_speed_m_per_min": "100-250", "feed_mm_per_rev": "0.03-0.15", "depth_of_cut_mm": "0.05-0.5" }, "coolant": "recommended to reduce BUE", "chip_control": "important", "preferred_coatings": ["uncoated"] }
+    },
+    "recommendations": {
+      "HSS": { "rake": "12-20°", "clearance": "4-8°", "nose_radius": "0.3-0.8 mm", "remarks": "Finishing sangat baik dengan HSS; awasi BUE." },
+      "Carbide": { "rake": "10-18°", "clearance": "4-8°", "nose_radius": "0.4-0.6 mm", "remarks": "Baik untuk kecepatan lebih tinggi." }
+    }
+  },
+
+  "Titanium & Nickel alloys": {
+    "attributes": { "hardness_max_HB": 380, "typical_examples": ["Ti-6Al-4V","Inconel 718"], "ductility": "low-to-medium", "abrasiveness": "high", "thermal_conductivity": "low", "work_hardening": "medium" },
+    "general_notes": "Sangat sulit dipotong: gunakan grade pahat tahan aus, setup kaku, halaman pendingin dan kecepatan potong relatif rendah.",
+    "operation": {
+      "roughing": { "recommended_tools": ["Carbide (high toughness)"], "geometry": { "rake": "0-6°", "clearance": "7-10°", "nose_radius": "0.6-1.0 mm", "edge_condition": "robust" }, "cutting_params": { "cutting_speed_m_per_min": "30-80", "feed_mm_per_rev": "0.05-0.25", "depth_of_cut_mm": "0.5-2.0" }, "coolant": "highly recommended (flood coolant)", "chip_control": "aim for small, breakable chips", "preferred_coatings": ["TiAlN","AlTiN"] },
+      "finishing": { "recommended_tools": ["Carbide (coated)", "CBN for some cases"], "geometry": { "rake": "0-6°", "clearance": "7-10°", "nose_radius": "0.2-0.6 mm", "edge_condition": "robust but sharp" }, "cutting_params": { "cutting_speed_m_per_min": "20-60", "feed_mm_per_rev": "0.02-0.12", "depth_of_cut_mm": "0.05-0.5" }, "coolant": "required for temperature control", "chip_control": "critical", "preferred_coatings": ["TiAlN","AlTiN"] }
+    },
+    "recommendations": {
+      "Carbide": { "rake": "0-6°", "clearance": "7-10°", "nose_radius": "0.2-0.6 mm", "remarks": "Gunakan grade berketangguhan tinggi; perhatikan pendinginan." }
+    },
+    "notes_for_instructor": "Performa sangat tergantung pada grade pahat dan rigitas mesin."
+  },
+
+  "Hardened Steel (>45 HRC)": {
+    "attributes": { "hardness_min_HRC": 45, "typical_examples": ["Hardened tool steel","Bearing steel"], "ductility": "low", "abrasiveness": "medium-to-high" },
+    "general_notes": "Untuk material keras gunakan CBN atau spesial ceramic; HSS/Carbide umum tidak cocok pada kekerasan tinggi.",
+    "operation": {
+      "roughing": { "recommended_tools": ["Ceramic","CBN"], "geometry": { "rake": "-5 to 0°", "clearance": "6-8°", "nose_radius": "0.2-0.6 mm", "edge_condition": "tough" }, "cutting_params": { "cutting_speed_m_per_min": "150-400 (CBN higher)", "feed_mm_per_rev": "0.05-0.2", "depth_of_cut_mm": "0.1-1.0" }, "coolant": "dry or minimal (CBN may prefer dry)", "chip_control": "special chipbreakers", "preferred_coatings": ["N/A"] },
+      "finishing": { "recommended_tools": ["CBN"], "geometry": { "rake": "-5 to 0°", "clearance": "6-8°", "nose_radius": "0.05-0.2 mm", "edge_condition": "super-fine" }, "cutting_params": { "cutting_speed_m_per_min": "200-600 (CBN)", "feed_mm_per_rev": "0.01-0.08", "depth_of_cut_mm": "0.01-0.2" }, "coolant": "usually dry for CBN", "chip_control": "critical", "preferred_coatings": [] }
+    },
+    "recommendations": { "CBN": { "rake": "-5 to 0°", "remarks": "Pilihan terbaik untuk hardened steels." } },
+    "notes_for_instructor": "CBN mahal; gunakan bila aplikasi menuntut finishing/produktivitas tinggi pada baja keras." 
+  },
+
+  "Free-Machining Steel": {
+    "attributes": { "hardness_max_HB": 200, "typical_examples": ["Free-cutting steels (with S/Pb)"], "ductility": "medium", "abrasiveness": "low" },
+    "general_notes": "Cepat dipotong karena bahan tambahan (S/Pb); dapat gunakan geometri tajam dan feed lebih tinggi.",
+    "operation": { "roughing": { "recommended_tools": ["Carbide","HSS"], "geometry": { "rake": "8-14°", "clearance": "6-8°", "nose_radius": "0.6-1.0 mm" }, "cutting_params": { "cutting_speed_m_per_min": "120-250", "feed_mm_per_rev": "0.15-0.6", "depth_of_cut_mm": "1-4" }, "coolant": "optional", "chip_control": "standard", "preferred_coatings": ["TiN"] }, "finishing": { "recommended_tools": ["HSS","Carbide"], "geometry": { "rake": "8-12°", "clearance": "6-8°", "nose_radius": "0.2-0.6 mm" }, "cutting_params": { "cutting_speed_m_per_min": "80-180", "feed_mm_per_rev": "0.03-0.2", "depth_of_cut_mm": "0.05-0.5" }, "coolant": "optional", "chip_control": "standard", "preferred_coatings": ["TiAlN"] } },
+    "recommendations": { "HSS": { "remarks": "Finishing baik; feed bisa cukup tinggi." } }
+  },
+
+  "Bronze (Phosphor)": {
+    "attributes": { "hardness_max_HB": 150, "typical_examples": ["Phosphor Bronze"], "ductility": "medium", "abrasiveness": "low-to-medium" },
+    "general_notes": "Sering abrasif tergantung paduan; gunakan geometri tajam dan perhatikan aus pada pahat.",
+    "operation": { "roughing": { "recommended_tools": ["Carbide"], "geometry": { "rake": "8-14°", "clearance": "4-8°", "nose_radius": "0.6-1.0 mm" }, "cutting_params": { "cutting_speed_m_per_min": "80-180", "feed_mm_per_rev": "0.1-0.4", "depth_of_cut_mm": "0.5-2.0" }, "coolant": "recommended", "chip_control": "chipbreaker helpful", "preferred_coatings": ["TiN","CVD"] }, "finishing": { "recommended_tools": ["HSS","Carbide"], "geometry": { "rake": "10-18°", "clearance": "4-8°", "nose_radius": "0.2-0.6 mm" }, "cutting_params": { "cutting_speed_m_per_min": "60-150", "feed_mm_per_rev": "0.03-0.15", "depth_of_cut_mm": "0.05-0.5" }, "coolant": "recommended", "chip_control": "important", "preferred_coatings": ["TiN"] } },
+    "recommendations": { "Carbide": { "remarks": "Umumnya baik; pilih grade terhadap abrasivitas." } }
+  },
+
+  "Plastics (ABS/Nylon)": {
+    "attributes": { "typical_examples": ["ABS","Nylon"], "ductility": "high", "thermal_sensitivity": "high" },
+    "general_notes": "Perhatian pada temperatur (melting), gunakan tajam dan pendinginan udara, kecepatan potong relatif tinggi dengan feed lebih besar.",
+    "operation": { "roughing": { "recommended_tools": ["HSS","Carbide"], "geometry": { "rake": "15-25°", "clearance": "4-8°", "nose_radius": "0.6-1.2 mm" }, "cutting_params": { "cutting_speed_m_per_min": "200-600", "feed_mm_per_rev": "0.1-1.0", "depth_of_cut_mm": "1-5" }, "coolant": "air or minimal (avoid wet that cause swelling)", "chip_control": "avoid melting, use sharp edges", "preferred_coatings": ["uncoated"] }, "finishing": { "recommended_tools": ["HSS"], "geometry": { "rake": "20-30°", "clearance": "4-8°", "nose_radius": "0.05-0.4 mm" }, "cutting_params": { "cutting_speed_m_per_min": "300-800", "feed_mm_per_rev": "0.05-0.5", "depth_of_cut_mm": "0.1-1.0" }, "coolant": "air cooling", "chip_control": "prevent heat build-up", "preferred_coatings": [] } },
+    "recommendations": { "HSS": { "remarks": "Pahat tajam, hindari overheating." } }
+  },
+
+  "CFRP (Composite)": {
+    "attributes": { "typical_examples": ["CFRP"], "abrasiveness": "high", "dust_hazard": "yes" },
+    "general_notes": "Bahaya debu dan aus cepat pada pahat; gunakan insert khusus untuk komposit, vakum/penyedot debu, dan kecepatan tinggi dengan feed rendah.",
+    "operation": { "roughing": { "recommended_tools": ["Special carbide/composite inserts"], "geometry": { "rake": "negative to low positive", "clearance": "4-8°", "nose_radius": "small" }, "cutting_params": { "cutting_speed_m_per_min": "300-1000", "feed_mm_per_rev": "0.02-0.1", "depth_of_cut_mm": "0.1-1.0" }, "coolant": "usually dry (coolant damages composite)", "chip_control": "dust extraction required", "preferred_coatings": ["diamond-coated"] }, "finishing": { "recommended_tools": ["diamond-coated inserts"], "geometry": { "rake": "low", "clearance": "4-8°", "nose_radius": "very small" }, "cutting_params": { "cutting_speed_m_per_min": "400-1000", "feed_mm_per_rev": "0.01-0.05", "depth_of_cut_mm": "0.05-0.5" }, "coolant": "dry; dust extraction required", "chip_control": "critical", "preferred_coatings": ["diamond-coated"] } },
+    "recommendations": { "Special": { "remarks": "Insert dan proses khusus; awasi hazard debu (gunakan PPE dan vakum)." } }
+  }
 }

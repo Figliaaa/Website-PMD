@@ -3,66 +3,94 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pemilihan Geometri Pahat Bubut - Versi Minimal</title>
+    <meta name="description" content="Aplikasi sederhana untuk merekomendasikan geometri pahat bubut berdasarkan material benda kerja dan material pahat." />
+    <meta name="theme-color" content="#0f172a" />
+    <title>Pemilihan Geometri Pahat Bubut - Cool Version</title>
+
+    <!-- preconnect to CDN for slightly faster load -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+      .sr-only {
+        position: absolute !important;
+        width: 1px; height: 1px;
+        padding: 0; margin: -1px;
+        overflow: hidden; clip: rect(0,0,0,0);
+        white-space: nowrap; border: 0;
+      }
+      #resultTable { width:100%; border-collapse:collapse; }
+      #resultTable th, #resultTable td { text-align:left; padding:0.35rem; border-bottom:1px solid rgba(0,0,0,0.06); }
+
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .fa-cogs {
+        animation: spin 3s linear infinite;
+      }
+    </style>
 </head>
 <body>
-     <main class="container">
-        <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-            <h1 style="margin:0">Pemilihan Geometri Pahat Bubut</h1>
-            <!-- Theme toggle placed top-right -->
-            <div>
-                <button id="theme-toggle" type="button" aria-pressed="false" title="Toggle theme" style="padding:0.4rem 0.6rem; border-radius:6px; border:1px solid var(--border); background:transparent; cursor:pointer">🌙</button>
-            </div>
-        </div>
-    <p>Pilih material benda kerja dan (opsional) material pahat untuk mendapatkan rekomendasi geometri pahat.</p>
+  <main class="container" id="main">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
+      <h1 style="margin:0"><i class="fas fa-cogs" aria-hidden="true"></i> Pemilihan Geometri Pahat Bubut</h1>
 
+      <div>
+        <button id="theme-toggle" type="button" aria-pressed="false" title="Toggle theme"
+                style="padding:0.4rem 0.6rem; border-radius:6px; border:1px solid var(--border); background:transparent; cursor:pointer">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+          <span class="sr-only">Toggle theme</span>
+        </button>
+      </div>
+    </div>
 
-    <form id="recForm">
-     <label for="workpiece_material">Material Benda Kerja</label>
-     <select id="workpiece_material" required>
-      <option value="">-- Pilih material --</option>
-    </select>
+    <p><i class="fas fa-info-circle" aria-hidden="true"></i>
+      <span> Pilih material benda kerja dan (opsional) material pahat untuk mendapatkan rekomendasi geometri pahat.</span>
+    </p>
 
+    <form id="recForm" aria-labelledby="main" novalidate>
+      <label for="workpiece_material"><i class="fas fa-wrench" aria-hidden="true"></i> Material Benda Kerja</label>
+      <select id="workpiece_material" required aria-required="true">
+        <option value="">-- Pilih material --</option>
+      </select>
 
-    <label for="tool_material">Material Pahat (opsional)</label>
-    <select id="tool_material">
-     <option value="">(Biarkan sistem memilih)</option>
-    </select>
+      <label for="tool_material"><i class="fas fa-tools" aria-hidden="true"></i> Material Pahat (opsional)</label>
+      <select id="tool_material">
+        <option value="">(Biarkan sistem memilih)</option>
+      </select>
 
+      <label for="operation"><i class="fas fa-target" aria-hidden="true"></i> Tujuan</label>
+      <select id="operation">
+        <option value="">(Umum)</option>
+        <option value="roughing">Roughing</option>
+        <option value="finishing">Finishing</option>
+      </select>
 
-    <label for="operation">Tujuan</label>
-    <select id="operation">
-     <option value="">(Umum)</option>
-     <option value="roughing">Roughing</option>
-     <option value="finishing">Finishing</option>
-    </select>
-
-
-     <button type="submit">Dapatkan Rekomendasi</button>
+      <button type="submit" id="submitBtn"><i class="fas fa-search" aria-hidden="true"></i> Dapatkan Rekomendasi</button>
     </form>
 
+    <section id="result" class="card hidden" aria-live="polite">
+      <h2><i class="fas fa-check-circle" aria-hidden="true"></i> Hasil Rekomendasi</h2>
 
-     <section id="result" class="card hidden">
-      <h2>Hasil Rekomendasi</h2>
-            <div id="explanation"></div>
-            <!-- short summary / highlight for quick reading -->
-            <div id="summary" class="muted" style="margin-top:0.5rem"></div>
+      <div id="explanation" role="status" aria-live="polite"></div>
 
-            <!-- readable key/value table for the recommendation JSON -->
-            <table id="resultTable" class="hidden" style="margin-top:0.75rem">
-                <thead>
-                    <tr><th>Properti</th><th>Nilai</th></tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+      <div id="summary" class="muted" style="margin-top:0.5rem"></div>
 
-            <!-- kid-friendly plain language summary and per-tool lists -->
-            <div id="friendlyDetails" class="card hidden" style="margin-top:0.75rem"></div>
+      <table id="resultTable" class="hidden" style="margin-top:0.75rem">
+        <thead>
+          <tr><th>Properti</th><th>Nilai</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
 
-            <pre id="jsonOut"></pre>
-     </section>
-        </main>
-        <script src="/static/app.js"></script>
-    </body>
+      <div id="friendlyDetails" class="card hidden" style="margin-top:0.75rem" aria-live="polite"></div>
+
+      <pre id="jsonOut" aria-hidden="false" style="margin-top:0.75rem"></pre>
+    </section>
+  </main>
+
+  <script src="/static/app.js" defer></script>
+</body>
 </html>

@@ -1,13 +1,13 @@
-/* Minimalist theme: clean spacing, subtle borders, reduced shadows */
 :root {
-	--bg: #ffffff;
-	--muted-bg: #f8f9fb;
-	--text: #0b1220;
-	--muted-text: #6b7280;
-	--border: #e6e9ef;
-	--accent: #111827;
-	--radius: 8px;
-	--container-max: 760px;
+	--bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	--muted-bg: rgba(255, 255, 255, 0.1);
+	--text: #ffffff;
+	--muted-text: #e0e0e0;
+	--border: rgba(255, 255, 255, 0.2);
+	--accent: #ff6b6b;
+	--radius: 12px;
+	--container-max: 800px;
+	--shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 body {
@@ -20,7 +20,6 @@ body {
 	line-height: 1.45;
 }
 
-/* keep both element and class selectors to avoid breaking markup */
 container, .container {
 	display: block;
 	max-width: var(--container-max);
@@ -96,20 +95,17 @@ a { color: var(--accent); text-decoration: underline; }
 
 small, .muted { color: var(--muted-text); font-size: 0.9rem; }
 
-/* Dark theme overrides: apply by setting data-theme="dark" on <html> or <body> */
 [data-theme="dark"], .dark {
 	--bg: #0b1220;
 	--muted-bg: #071021;
-	--text: #7e7e7e;
+	--text: #f1f1f1;
 	--muted-text: #9aa4b2;
 	--border: rgba(255,255,255,0.06);
 	--accent: #60a5fa;
 }
 
-/* ensure body uses bg variable */
 body { background: var(--bg); }
 
-/* result table styling */
 #resultTable {
 	width: 100%;
 	max-width: 760px;
@@ -132,8 +128,124 @@ body { background: var(--bg); }
 #resultTable tbody tr:nth-child(odd) { background: transparent; }
 #resultTable pre { margin:0; white-space:pre-wrap; color:var(--muted-text); }
 
-/* friendly details inside results */
 #friendlyDetails h3 { font-size: 1rem; margin-bottom: 0.2rem; }
 #friendlyDetails ul { list-style: disc; margin-left: 1rem; color: var(--text); }
 #friendlyDetails li { margin: 0.2rem 0; }
 #friendlyDetails p { margin: 0.2rem 0; }
+
+.container {
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+	from { opacity: 0; transform: translateY(20px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px);
+	box-shadow: var(--shadow);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+button {
+	background: linear-gradient(45deg, #ff6b6b, #ffa500);
+	transition: all 0.3s ease;
+}
+
+button:hover {
+	background: linear-gradient(45deg, #ffa500, #ff6b6b);
+	transform: translateY(-2px);
+	box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+select, input, textarea {
+	background: rgba(255, 255, 255, 0.1);
+	transition: border-color 0.3s ease;
+}
+
+select:focus, input:focus, textarea:focus {
+	border-color: var(--accent);
+	box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
+}
+
+#result {
+	animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+	from { opacity: 0; transform: translateX(-20px); }
+	to { opacity: 1; transform: translateX(0); }
+}
+
+#theme-toggle {
+	background: rgba(255, 255, 255, 0.1);
+	transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+	background: rgba(255, 255, 255, 0.2);
+	transform: scale(1.1);
+}
+
+.loading {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border: 3px solid rgba(255, 255, 255, 0.3);
+	border-radius: 50%;
+	border-top-color: var(--accent);
+	animation: spin 1s ease-in-out infinite;
+	margin-left: 10px;
+}
+
+@keyframes spin {
+	to { transform: rotate(360deg); }
+}
+
+:root {
+  --select-bg: rgba(255,255,255,0.12);  
+  --option-bg: rgba(11,18,32,0.95);     
+  --option-text: var(--text);           
+}
+
+[data-theme="light"] {
+  --select-bg: rgba(255,255,255,0.9);
+  --option-bg: rgba(255,255,255,0.98); 
+  --option-text: #0f172a;
+}
+
+select {
+  background: var(--select-bg) !important;
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important; 
+  position: relative;
+  z-index: 3; 
+  -webkit-appearance: menulist-button;
+}
+
+select option {
+  background: var(--option-bg) !important;
+  color: var(--option-text) !important;
+  padding: 0.35rem 0.5rem;
+}
+
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255,107,107,0.12);
+  border-color: var(--accent);
+}
+
+select::-ms-expand {
+  display: inline-block;
+}
